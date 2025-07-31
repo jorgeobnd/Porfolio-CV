@@ -3,6 +3,14 @@ import ExperienceItem from "./ExperienceItem.astro";
 
 const EXPERIENCIE = [
   {
+    date: "Marzo 2025 - Actualidad",
+    title: "Software Developer",
+    company: "Wimix Solutions & Services S.A",
+    description:
+      "Desarrollador de software responsable de diseñar y optimizar informes financieros con Crystal Reports, garantizando la precisión contable y apoyando la toma de decisiones de las empresas de microfinanzas. Paralelamente, contribuyo al desarrollo de sistemas de gestión empresarial (ERP) utilizando TypeScript, NestJS y TypeORM para una gestión eficiente de las entidades y transacciones de la base de datos, mejorando la escalabilidad y la facilidad de mantenimiento del sistema.\n",
+    link: "",
+  },
+  {
     date: "Noviembre 2024",
     title: "Web Developer | Freelance",
     company: "Insignia Financial Group",
@@ -24,9 +32,9 @@ const EXPERIENCIE = [
 <ol class="relative border-s border-gray-200 ml-3">
   {
     EXPERIENCIE.map((experiencie) => (
-      <li class="mb-10 ms-4">
-        <ExperienceItem {...experiencie} />
-      </li>
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experiencie}/>
+            </li>
     ))
   }
 </ol>
