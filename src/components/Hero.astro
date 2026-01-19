@@ -3,6 +3,7 @@ import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import FileCV from "@/components/icons/FileCV.astro";
 ---
 
 <div class="max-w-xl">
@@ -42,6 +43,10 @@ import SocialPill from "@/components/SocialPill.astro";
     <SocialPill href="https://www.linkedin.com/in/jorgeobando1610/">
       <LinkedInIcon class="size-4" />
       LinkedIn
+    </SocialPill>
+    <SocialPill href="/CV_JorgeObando.pdf" download="CV_JorgeObando.pdf">
+      <FileCV class="size-4" />
+      Descargar CV
     </SocialPill>
   </nav>
 </div>
