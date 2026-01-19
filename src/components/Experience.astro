@@ -1,32 +1,40 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
+import ExperienceItem from './ExperienceItem.astro'
 
 const EXPERIENCIE = [
-  {
-    date: "Noviembre 2024",
-    title: "Web Developer | Freelance",
-    company: "Insignia Financial Group",
-    description:
-      "Durante mi labor, fui resposable del desarrollo, mantenimiento y rediseño de planillas web, que se adaptaban a las necesidades de los clientes. También me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario.",
-    link: "",
-  },
-  {
-    date: "Abril 2024",
-    title: "UX/UI Designer | Freelance",
-    company: "Brandify - Digital Platform",
-    description:
-      "Durante mi labor, me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario. También me dediqué a la creación de un diseño de marca y una propuesta de parte de estudiantes de la Universidad Americana (UAM) ante la necesidad de una plataforma digital en la que profesionales del area del marketing y diseño gráfico puedan compartir su trabajo, de modo que, empresas que se encuentren en la busqueda de dichos profesionales con habilidades especificas y que se acomplen a su necesidad, puedan relacionarse dentro de un entorno digital.",
-    link: "",
-  },
-];
+   {
+      date: 'Febrero 2025 - Actualidad',
+      title: 'Analista Programador',
+      company: 'Wimix S.A.',
+      description:
+         'Desarrollo y mantenimiento de sistemas empresariales (ERP y CRM) para clientes del sector financiero. Participé en el diseño e implementación del módulo contable central, trabajando con .NET, bases de datos SQL y arquitecturas basadas en microservicios. Enfoque en análisis de requerimientos, integración de sistemas, soporte a producción y entrega de soluciones escalables alineadas al negocio.',
+      link: 'https://wimixsolutions.com/',
+   },
+   {
+      date: 'Noviembre 2024',
+      title: 'Web Developer | Freelance',
+      company: 'Insignia Financial Group',
+      description:
+         'Durante mi labor, fui resposable del desarrollo, mantenimiento y rediseño de planillas web, que se adaptaban a las necesidades de los clientes. También me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario.',
+      link: 'https://insigniafa.com/es/',
+   },
+   {
+      date: 'Abril 2024',
+      title: 'UX/UI Designer | Freelance',
+      company: 'Brandify - Digital Platform',
+      description:
+         'Durante mi labor, me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario. También me dediqué a la creación de un diseño de marca y una propuesta de parte de estudiantes de la Universidad Americana (UAM) ante la necesidad de una plataforma digital en la que profesionales del area del marketing y diseño gráfico puedan compartir su trabajo, de modo que, empresas que se encuentren en la busqueda de dichos profesionales con habilidades especificas y que se acomplen a su necesidad, puedan relacionarse dentro de un entorno digital.',
+      link: '',
+   },
+]
 ---
 
 <ol class="relative border-s border-gray-200 ml-3">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="mb-10 ms-4">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
-  }
+   {
+      EXPERIENCIE.map((experiencie) => (
+              <li class="mb-10 ms-4">
+                  <ExperienceItem {...experiencie}/>
+              </li>
+      ))
+   }
 </ol>
