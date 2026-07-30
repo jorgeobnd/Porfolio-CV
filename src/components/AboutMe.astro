@@ -1,5 +1,47 @@
 ---
+import { getLangFromUrl } from "@/i18n/utils";
+
 const personalImageAlt = "Jorge Obando";
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  es: {
+    p1: {
+      pre: "Soy Jorge Obando, Desarrollador Full Stack y Analista Programador, Ingeniero en Sistemas titulado por la Universidad Nacional de Ingeniería (UNI). Me especializo en construir ",
+      strong: "soluciones escalables con TypeScript, NestJS, React y Python",
+      post: ", cubriendo el ciclo completo de desarrollo de sistemas ERP y aplicaciones web: desde el diseño de la arquitectura hasta la entrega en producción.",
+    },
+    p2: {
+      pre: "Además de mi rol como analista programador, soy ",
+      strong: "fundador de Saasify Nic",
+      post: ", donde diseño y construyo sistemas SaaS multi-tenant para pequeñas y medianas empresas de Centroamérica —como GymSYSS y SaaSify Inventarios— aplicando buenas prácticas de seguridad, arquitectura multi-tenant y automatización de procesos desde cero.",
+    },
+    p3: {
+      pre: "Me caracteriza una ",
+      strong: "actitud proactiva y la capacidad de integrarme rápidamente en equipos multidisciplinarios ágiles",
+      post: ". Estoy en constante búsqueda de retos que combinen ingeniería sólida con impacto real en el negocio.",
+    },
+  },
+  en: {
+    p1: {
+      pre: "I'm Jorge Obando, Full Stack Developer and Programmer Analyst, a certified Systems Engineer from the Universidad Nacional de Ingeniería (UNI). I specialize in building ",
+      strong: "scalable solutions with TypeScript, NestJS, React and Python",
+      post: ", covering the full development cycle of ERP systems and web applications: from architecture design to production delivery.",
+    },
+    p2: {
+      pre: "Besides my role as a programmer analyst, I'm the ",
+      strong: "founder of Saasify Nic",
+      post: ", where I design and build multi-tenant SaaS systems for small and medium businesses across Central America —like GymSYSS and SaaSify Inventarios— applying security best practices, multi-tenant architecture and process automation from scratch.",
+    },
+    p3: {
+      pre: "I'm known for a ",
+      strong: "proactive attitude and the ability to quickly integrate into agile, multidisciplinary teams",
+      post: ". I'm constantly seeking challenges that combine solid engineering with real business impact.",
+    },
+  },
+} as const;
+
+const t = content[lang];
 ---
 
 <article
@@ -8,28 +50,17 @@ const personalImageAlt = "Jorge Obando";
   <div
     class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
   >
-    <p>
-      Mi nombre es Jorge Obando y soy egresado de Ingeniería de Sistemas en la Universidad Nacional de Ingeniería. Mi pasión por la programación y la tecnología comenzó muchos años atrás,<strong
-        >  lo que me ha impulsado a mantenerme siempre al día con los avances tecnológicos</strong
-      >,
-      y a buscar soluciones innovadoras a los retos actuales. 
-    </p>
+    <p>{t.p1.pre}<strong>{t.p1.strong}</strong>{t.p1.post}</p>
 
-    <p>
-      A lo largo de mi formación académica, he enfrentado desafíos que me han permitido crecer tanto profesional como personalmente.  <strong
-        >He desarrollado habilidades clave como el trabajo en equipo, la comunicación efectiva, la proactividad y la capacidad de adaptarme rápidamente a nuevos entornos.</strong
-      >. Además, valoro profundamente el aprendizaje continuo y el apoyo mutuo como pilares fundamentales para el éxito en cualquier proyecto.
-    </p>
+    <p>{t.p2.pre}<strong>{t.p2.strong}</strong>{t.p2.post}</p>
 
-    <p>
-      Estoy entusiasmado por aplicar mis conocimientos y habilidades en proyectos que impulsen el desarrollo tecnológico, y <strong>me encuentro en constante búsqueda de oportunidades para seguir aprendiendo y contribuyendo al crecimiento de las organizaciones</strong> con las que colabore.
-    </p>
+    <p>{t.p3.pre}<strong>{t.p3.strong}</strong>{t.p3.post}</p>
   </div>
 
   <img
     width="200"
     height="200"
-    src="/fb_ProfilePhoto.webp"
+    src="/profile-about.webp"
     alt={personalImageAlt}
     class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
     style="object-position: 50% 50%"
