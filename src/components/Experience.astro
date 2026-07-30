@@ -1,38 +1,87 @@
 ---
 import ExperienceItem from './ExperienceItem.astro'
+import { getLangFromUrl } from '@/i18n/utils'
 
-const EXPERIENCIE = [
-   {
-      date: 'Marzo 2025 - Febrero 2026',
-      title: 'Analista Programador',
-      company: 'Wimix S.A.',
-      description:
-         'Desarrollo y mantenimiento de sistemas empresariales (ERP y CRM) para clientes del sector financiero. Participé en el diseño e implementación del módulo contable central, trabajando con .NET, bases de datos SQL y arquitecturas basadas en microservicios. Enfoque en análisis de requerimientos, integración de sistemas, soporte a producción y entrega de soluciones escalables alineadas al negocio.',
-      link: 'https://wimixsolutions.com/',
-   },
-   {
-      date: 'Noviembre 2024 - Diciembre 2024',
-      title: 'Web Developer | Freelance',
-      company: 'Insignia Financial Group',
-      description:
-         'Durante mi labor, fui resposable del desarrollo, mantenimiento y rediseño de planillas web, que se adaptaban a las necesidades de los clientes. También me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario.',
-      link: 'https://insigniafa.com/es/',
-   },
-   {
-      date: 'Abril 2024 - Junio 2024',
-      title: 'UX/UI Designer | Freelance',
-      company: 'Brandify - Digital Platform',
-      description:
-         'Durante mi labor, me dediqué a la creación de nuevas páginas y funcionalidades para mejorar la experiencia del usuario. También me dediqué a la creación de un diseño de marca y una propuesta de parte de estudiantes de la Universidad Americana (UAM) ante la necesidad de una plataforma digital en la que profesionales del area del marketing y diseño gráfico puedan compartir su trabajo, de modo que, empresas que se encuentren en la busqueda de dichos profesionales con habilidades especificas y que se acomplen a su necesidad, puedan relacionarse dentro de un entorno digital.',
-      link: '',
-   },
-]
+const lang = getLangFromUrl(Astro.url)
+
+const EXPERIENCE = {
+   es: [
+      {
+         date: 'Marzo 2026 - Actualidad',
+         title: 'Analista Programador',
+         company: 'El Hálcon',
+         description:
+            'Diseño y despliegue de reportes comerciales avanzados con DevExpress, aportando análisis críticos de rotación de inventario y volumen de ventas para la dirección estratégica. Lidero la modernización de sistemas legacy en C#, optimizando código y mejorando la experiencia de usuario de aplicaciones internas. Colaboro en un sistema gerencial web que permite la autogestión de tareas administrativas, reduciendo la dependencia del departamento de TI, y brindo soporte técnico especializado de forma remota.',
+         link: '',
+      },
+      {
+         date: 'Marzo 2025 - Febrero 2026',
+         title: 'Analista Programador',
+         company: 'Wimix S.A.',
+         description:
+            'Diseñé y desarrollé módulos para un sistema de gestión empresarial (ERP) utilizando TypeScript, NestJS y TypeORM, implementando la lógica de negocio para la administración de clientes, productos y transacciones financieras en bases de datos SQL. Refactoricé componentes clave del backend, mejorando la estructura del código y optimizando consultas, lo que facilitó la incorporación de nuevos desarrolladores y aumentó la eficiencia en la resolución de incidencias. Participé además en la automatización de reportes contables y de cartera con Crystal Reports, eliminando procesos manuales en Excel.',
+         link: 'https://wimixsolutions.com/',
+      },
+      {
+         date: 'Noviembre 2024 - Diciembre 2024',
+         title: 'Web Frontend Developer | Freelance',
+         company: 'Insignia Financial Group',
+         description:
+            'Construí desde cero y mantuve componentes reutilizables en React para la plataforma interna de Business Intelligence, priorizando una experiencia de usuario intuitiva validada junto al equipo de analistas financieros. Colaboré en la integración de plantillas de visualización con Power BI, optimizando la estructura de los datos exportados para mejorar la fluidez de los dashboards ejecutivos.',
+         link: 'https://insigniafa.com/es/',
+      },
+      {
+         date: 'Abril 2024 - Junio 2024',
+         title: 'UX/UI Designer | Freelance',
+         company: 'Brandify - Digital Platform',
+         description:
+            'Apliqué principios de UI/UX en Figma para diseñar wireframes y prototipos interactivos de una plataforma digital pensada para que profesionales de marketing y diseño gráfico compartan su trabajo y conecten con empresas que buscan sus habilidades específicas, logrando una navegación más clara y menos pasos para completar las tareas principales. Trabajé en coordinación estrecha con los desarrolladores frontend, entregando assets y especificaciones que agilizaron la implementación en React.',
+         link: '',
+      },
+   ],
+   en: [
+      {
+         date: 'March 2026 - Present',
+         title: 'Programmer Analyst',
+         company: 'El Hálcon',
+         description:
+            'Design and deployment of advanced business reports with DevExpress, providing critical inventory turnover and sales volume analysis for strategic decision-making. I lead the modernization of legacy C# systems, optimizing code and improving the user experience of internal applications. I collaborate on a web management system that enables self-service for administrative tasks, reducing dependency on the IT department, and provide specialized remote technical support.',
+         link: '',
+      },
+      {
+         date: 'March 2025 - February 2026',
+         title: 'Programmer Analyst',
+         company: 'Wimix S.A.',
+         description:
+            'Designed and developed modules for an enterprise resource planning (ERP) system using TypeScript, NestJS and TypeORM, implementing business logic for customer, product and financial transaction management on SQL databases. Refactored key backend components, improving code structure and optimizing queries, which eased onboarding new developers and increased efficiency resolving incidents. Also took part in automating accounting and portfolio reports with Crystal Reports, eliminating manual Excel processes.',
+         link: 'https://wimixsolutions.com/',
+      },
+      {
+         date: 'November 2024 - December 2024',
+         title: 'Web Frontend Developer | Freelance',
+         company: 'Insignia Financial Group',
+         description:
+            'Built from scratch and maintained reusable React components for the internal Business Intelligence platform, prioritizing an intuitive user experience validated together with the financial analysts team. Collaborated on integrating visualization templates with Power BI, optimizing the structure of exported data to improve the fluidity of executive dashboards.',
+         link: 'https://insigniafa.com/es/',
+      },
+      {
+         date: 'April 2024 - June 2024',
+         title: 'UX/UI Designer | Freelance',
+         company: 'Brandify - Digital Platform',
+         description:
+            'Applied UI/UX principles in Figma to design wireframes and interactive prototypes for a digital platform aimed at marketing and graphic design professionals sharing their work and connecting with companies looking for their specific skills, achieving clearer navigation and fewer steps to complete core tasks. Worked closely with frontend developers, delivering assets and specs that streamlined the React implementation.',
+         link: '',
+      },
+   ],
+} as const
+
+const EXPERIENCIE = EXPERIENCE[lang]
 ---
 
 <ol class="relative border-s border-gray-200 ml-3">
    {
       EXPERIENCIE.map((experiencie) => (
-              <li class="mb-10 ms-4">
+              <li class="mb-10 ms-4" data-reveal>
                   <ExperienceItem {...experiencie}/>
               </li>
       ))
