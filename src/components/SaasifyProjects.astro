@@ -1,0 +1,193 @@
+---
+import NestJS from "./icons/NestJS.astro";
+import PostgreSQL from "./icons/PostgreSQL.astro";
+import Prisma from "./icons/Prisma.astro";
+import Redis from "./icons/Redis.astro";
+import React from "./icons/React.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Typescript from "./icons/Typescript.astro";
+import Vite from "./icons/Vite.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const TAGS = {
+  NESTJS: { name: "NestJS", class: "bg-[#E0234E]/10 text-[#E0234E]", icon: NestJS },
+  POSTGRES: { name: "PostgreSQL", class: "bg-[#336791]/10 text-[#336791] dark:text-[#6badd6]", icon: PostgreSQL },
+  PRISMA: { name: "Prisma", class: "bg-[#16A394]/10 text-[#16A394]", icon: Prisma },
+  REDIS: { name: "Redis", class: "bg-[#DC382D]/10 text-[#DC382D]", icon: Redis },
+  REACT: { name: "React", class: "bg-[#003159] text-white", icon: React },
+  VITE: { name: "Vite", class: "bg-[#003159] text-white", icon: Vite },
+  TAILWIND: { name: "Tailwind CSS", class: "bg-[#003159] text-white", icon: Tailwind },
+  TYPESCRIPT: { name: "Typescript", class: "bg-[#003159] text-white", icon: Typescript },
+};
+
+const SAASIFY_BASE = [
+  {
+    title: "GymSYSS",
+    images: [
+      { src: "/projects/saasify/gymsyss/gymsyss-01.webp", alt: "Pantalla de login de GymSYSS con branding de Saasify Nic" },
+      { src: "/projects/saasify/gymsyss/gymsyss-02.webp", alt: "Panel de inicio de GymSYSS con métricas de ingresos, afluencia y alertas de gestión" },
+      { src: "/projects/saasify/gymsyss/gymsyss-03.webp", alt: "Gestión de clientes de GymSYSS con enrolamiento biométrico y estado de membresías" },
+      { src: "/projects/saasify/gymsyss/gymsyss-04.webp", alt: "Punto de venta de cafetería y fitness shop dentro de GymSYSS" },
+      { src: "/projects/saasify/gymsyss/gymsyss-05.webp", alt: "Historial de transacciones y control financiero de GymSYSS" },
+    ],
+    productLink: "https://saasifynic.com/gymsyss",
+    tags: [TAGS.NESTJS, TAGS.POSTGRES, TAGS.REACT, TAGS.VITE, TAGS.TYPESCRIPT, TAGS.TAILWIND],
+  },
+  {
+    title: "SaaSify Inventarios",
+    images: [
+      { src: "/projects/saasify/quicklybox/quicklybox-01.webp", alt: "Dashboard de QuicklyBoxSYSS con KPIs y alerta de stock crítico" },
+      { src: "/projects/saasify/quicklybox/quicklybox-02.webp", alt: "Módulo de inventario de QuicklyBoxSYSS con productos, SKU, precios y niveles de stock" },
+      { src: "/projects/saasify/quicklybox/quicklybox-03.webp", alt: "Historial de ventas de QuicklyBoxSYSS" },
+      { src: "/projects/saasify/quicklybox/quicklybox-04.webp", alt: "Módulo de delivery de QuicklyBoxSYSS con calendario de entregas" },
+      { src: "/projects/saasify/quicklybox/quicklybox-05.webp", alt: "Terminal de caja de QuicklyBoxSYSS con control de ingresos y egresos" },
+    ],
+    productLink: "https://saasifynic.com/inventarios",
+    tags: [TAGS.NESTJS, TAGS.PRISMA, TAGS.POSTGRES, TAGS.REDIS, TAGS.REACT, TAGS.TYPESCRIPT],
+  },
+] as const;
+
+const SAASIFY_TEXT = {
+  es: [
+    {
+      status: "Producto en producción",
+      description:
+        "SaaS multi-tenant de gestión de gimnasios: control de acceso biométrico por huella, mensajería automática por WhatsApp, PWA para socios y caja/cafetería. Vendido activamente a gimnasios en Nicaragua bajo Saasify Nic.",
+      achievements: [
+        "Autenticación biométrica en tiempo real vía WebSocket, aislada por tenant.",
+        "2FA (TOTP) obligatorio para roles administrativos, con Row-Level Security habilitado en las 23 tablas públicas de la base de datos.",
+        "Automatización de mensajería por WhatsApp y reportes de asistencia/cobro sin intervención manual.",
+      ],
+    },
+    {
+      status: "En desarrollo activo",
+      description:
+        "SaaS multi-tenant de inventario, ventas y proveedores para PYMEs, construido como sucesor directo de GymSYSS aplicando desde el día 1 las lecciones de seguridad y arquitectura aprendidas en ese primer producto.",
+      achievements: [
+        "Aislamiento por schema-per-tenant en PostgreSQL (más estricto que el row-level del proyecto anterior).",
+        "Colas con BullMQ + Redis para generación de reportes y alertas automáticas de stock bajo.",
+        "Flujo completo de compras a proveedores (crear → enviar → recibir → cancelar) con control de condiciones de carrera en el stock.",
+      ],
+    },
+  ],
+  en: [
+    {
+      status: "Live product",
+      description:
+        "Multi-tenant SaaS for gym management: fingerprint biometric access control, automated WhatsApp messaging, member PWA and checkout/café point of sale. Actively sold to gyms in Nicaragua under Saasify Nic.",
+      achievements: [
+        "Real-time biometric authentication over WebSocket, isolated per tenant.",
+        "Mandatory 2FA (TOTP) for admin roles, with Row-Level Security enabled across the database's 23 public tables.",
+        "Automated WhatsApp messaging and attendance/billing reports with no manual intervention.",
+      ],
+    },
+    {
+      status: "Actively in development",
+      description:
+        "Multi-tenant SaaS for inventory, sales and suppliers for SMBs, built as a direct successor to GymSYSS, applying from day one the security and architecture lessons learned on that first product.",
+      achievements: [
+        "Schema-per-tenant isolation in PostgreSQL (stricter than the row-level approach of the previous project).",
+        "BullMQ + Redis queues for report generation and automatic low-stock alerts.",
+        "Full supplier purchasing flow (create → send → receive → cancel) with race-condition control on stock.",
+      ],
+    },
+  ],
+} as const;
+
+const SAASIFY_PROJECTS = SAASIFY_BASE.map((base, i) => ({
+  ...base,
+  ...SAASIFY_TEXT[lang][i],
+}));
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    SAASIFY_PROJECTS.map(({ images, title, status, description, achievements, tags, productLink }) => (
+      <article
+        class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
+        data-reveal
+      >
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt={images[0].alt}
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-64"
+              src={images[0].src}
+              loading="lazy"
+            />
+          </div>
+          <ul class="grid grid-cols-4 gap-2 mt-2">
+            {images.slice(1).map((img) => (
+              <li>
+                <a
+                  href={img.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block overflow-hidden transition rounded-lg outline-none opacity-80 ring-1 ring-gray-800 hover:opacity-100 hover:ring-gray-600 focus-visible:opacity-100"
+                >
+                  <img
+                    alt={img.alt}
+                    class="object-cover object-top w-full h-14 sm:h-16"
+                    src={img.src}
+                    loading="lazy"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <div class="flex flex-wrap items-center gap-2">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <span class="rounded-full text-xs bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 py-1 px-2 font-medium">
+              {status}
+            </span>
+          </div>
+          <span class="inline-block mt-2 rounded-full text-xs bg-gray-500/10 text-gray-600 dark:text-gray-400 py-1 px-2">
+            {t("saasify.privateBadge")}
+          </span>
+
+          <div class="flex flex-wrap mt-3">
+            <ul class="flex flex-row flex-wrap mb-2 gap-2">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                  >
+                    <tag.icon class="size-4" />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="mt-2 text-gray-700 dark:text-gray-400">
+              {description}
+            </p>
+
+            <ul class="mt-3 space-y-1.5 list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+              {achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
+            </ul>
+
+            <footer class="flex items-end justify-start mt-4 gap-x-4">
+              <LinkButton href={productLink}>
+                <Link class="size-4" />
+                {t("saasify.viewProduct")}
+              </LinkButton>
+            </footer>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
