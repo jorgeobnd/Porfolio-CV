@@ -1,12 +1,17 @@
 ---
 import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import GitHubIcon from "@/components/icons/GitHub.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
 import FileCV from "@/components/icons/FileCV.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<div class="max-w-xl">
+<div class="max-w-xl" data-reveal>
   <div class="flex gap-4 mb-4">
     <img
       class="rounded-full shadow-lg size-16 object-cover"
@@ -20,33 +25,36 @@ import FileCV from "@/components/icons/FileCV.astro";
       rel="noopener"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
-      <Badge>Disponible para trabajar</Badge>
+      <Badge>{t("hero.badge")}</Badge>
     </a>
   </div>
   <h1
     class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    Hola, Soy Jorge!
+    {t("hero.title")}
   </h1>
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    Egresado de Ingeniería de Sistemas.<strong
-      >Especializado en el desarrollo web</strong
-    > utilizando tecnologías que se adecuan a las necesidades requeridas.
+    {t("hero.subtitlePrefix")}<strong>{t("hero.subtitleStrong")}</strong>
+    {t("hero.subtitleSuffix")}
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:jorge.obnd@gmail.com">
       <MailIcon class="size-4" />
-      Contáctame
+      {t("hero.contact")}
     </SocialPill>
     <SocialPill href="https://www.linkedin.com/in/jorgeobando1610/">
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
+    <SocialPill href="https://github.com/jorgeobnd">
+      <GitHubIcon class="size-4" />
+      GitHub
+    </SocialPill>
     <SocialPill href="/CV_JorgeObando.pdf" download="CV_JorgeObando.pdf">
       <FileCV class="size-4" />
-      Descargar CV
+      {t("hero.cv")}
     </SocialPill>
   </nav>
 </div>
