@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, getOtherLang, getLocalizedPath } from "@/i18n/utils";
+import { ui } from "@/i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const otherLang = getOtherLang(lang);
+const targetHref = getLocalizedPath(otherLang);
+const label = ui[lang]["langtoggle.label"];
+---
+
+<div class="relative ml-1 mr-1">
+  <a
+    id="lang-toggle-link"
+    href={targetHref}
+    data-lang={otherLang}
+    class="flex items-center justify-center text-xs font-semibold uppercase transition size-5 hover:scale-125 hover:text-yellow-500 dark:hover:text-yellow-400"
+    aria-label={label}
+    title={label}
+  >
+    {otherLang}
+  </a>
+</div>
+
+<script is:inline>
+  const link = document.getElementById("lang-toggle-link")
+  if (link) {
+    const base = link.getAttribute("href")
+    link.setAttribute("href", base + window.location.hash)
+    link.addEventListener("click", () => {
+      localStorage.setItem("lang", link.dataset.lang)
+    })
+  }
+</script>
