@@ -1,26 +1,42 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import LangToggle from "./LangToggle.astro"
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "@/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const base = getLocalizedPath(lang)
 
 const navItems = [
   {
-    title: "Experiencia",
+    title: t("nav.experience"),
     label: "experiencia",
-    url: "/#experiencia",
+    url: `${base}#experiencia`,
   },
   {
-    title: "Proyectos",
+    title: t("nav.saasify"),
+    label: "saasify",
+    url: `${base}#saasify`,
+  },
+  {
+    title: t("nav.projects"),
     label: "proyectos",
-    url: "/#proyectos",
+    url: `${base}#proyectos`,
   },
   {
-    title: "Sobre mí",
+    title: t("nav.tech"),
+    label: "tecnologias",
+    url: `${base}#tecnologias`,
+  },
+  {
+    title: t("nav.about"),
     label: "sobre-mi",
-    url: "/#sobre-mi",
+    url: `${base}#sobre-mi`,
   },
   {
-    title: "Contacto",
+    title: t("nav.contact"),
     label: "contacto",
-    url: "mailto:miduga@gmail.com",
+    url: "mailto:jorge.obnd@gmail.com",
   },
 ]
 ---
@@ -42,6 +58,7 @@ const navItems = [
         </a>
       ))
     }
+    <LangToggle />
     <ThemeToggle />
   </nav>
 </header>
