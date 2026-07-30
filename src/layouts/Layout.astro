@@ -3,6 +3,7 @@ import "@fontsource-variable/onest";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { getLangFromUrl } from "@/i18n/utils";
 
 interface Props {
   title: string;
@@ -10,10 +11,12 @@ interface Props {
 }
 
 const { description, title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const canonicalPath = lang === "en" ? "/en/" : "/";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -21,6 +24,28 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="alternate" hreflang="es" href={`${Astro.site}`} />
+    <link rel="alternate" hreflang="en" href={`${Astro.site}en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${Astro.site}`} />
+    <link rel="canonical" href={`${Astro.site}${canonicalPath.slice(1)}`} />
+    <script is:inline>
+      (function () {
+        var path = window.location.pathname
+        var onEnglish = path.indexOf("/en") === 0
+        var stored = localStorage.getItem("lang")
+
+        if (stored) {
+          if (stored === "en" && !onEnglish) {
+            window.location.replace("/en/" + window.location.hash)
+          }
+          return
+        }
+
+        if (!onEnglish && !navigator.language.toLowerCase().startsWith("es")) {
+          window.location.replace("/en/" + window.location.hash)
+        }
+      })()
+    </script>
   </head>
 
   <body class="relative text-black dark:text-white">
@@ -31,6 +56,43 @@ const { description, title } = Astro.props;
     <Header />
     <slot />
     <Footer />
+    <script>
+      import { animate } from "motion"
+
+      document.addEventListener("astro:page-load", () => {
+        const items = document.querySelectorAll<HTMLElement>("[data-reveal]")
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches
+
+        if (reduceMotion || items.length === 0) {
+          items.forEach((el) => (el.style.opacity = "1"))
+          return
+        }
+
+        items.forEach((el) => (el.style.opacity = "0"))
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return
+              animate(
+                entry.target,
+                {
+                  opacity: [0, 1],
+                  transform: ["translateY(16px)", "translateY(0px)"],
+                },
+                { duration: 0.5, ease: "easeOut" },
+              )
+              obs.unobserve(entry.target)
+            })
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+        )
+
+        items.forEach((el) => observer.observe(el))
+      })
+    </script>
     <style is:global>
       :root {
         color-scheme: light dark;
