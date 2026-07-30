@@ -1,0 +1,154 @@
+---
+import NestJS from "./icons/NestJS.astro";
+import PostgreSQL from "./icons/PostgreSQL.astro";
+import Prisma from "./icons/Prisma.astro";
+import Redis from "./icons/Redis.astro";
+import React from "./icons/React.astro";
+import Vite from "./icons/Vite.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Typescript from "./icons/Typescript.astro";
+import Figma from "./icons/Figma.astro";
+import NodeJS from "./icons/NodeJS.astro";
+import Python from "./icons/Python.astro";
+import DotNet from "./icons/DotNet.astro";
+import VueJS from "./icons/VueJS.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import MySQL from "./icons/MySQL.astro";
+import TypeORM from "./icons/TypeORM.astro";
+import Docker from "./icons/Docker.astro";
+import Git from "./icons/Git.astro";
+import PowerBI from "./icons/PowerBI.astro";
+import CrystalReports from "./icons/CrystalReports.astro";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const CATEGORIES = {
+  es: [
+    {
+      title: "Backend",
+      items: [
+        { name: "TypeScript", icon: Typescript },
+        { name: "NestJS", icon: NestJS },
+        { name: "Node.js", icon: NodeJS },
+        { name: "Python", icon: Python },
+        { name: ".NET / C#", icon: DotNet },
+      ],
+    },
+    {
+      title: "Frontend",
+      items: [
+        { name: "React", icon: React },
+        { name: "Vite", icon: Vite },
+        { name: "Vue.js", icon: VueJS },
+        { name: "Astro", icon: AstroIcon },
+        { name: "Tailwind CSS", icon: Tailwind },
+      ],
+    },
+    {
+      title: "Datos & Infra",
+      items: [
+        { name: "PostgreSQL", icon: PostgreSQL },
+        { name: "MySQL", icon: MySQL },
+        { name: "TypeORM", icon: TypeORM },
+        { name: "Prisma", icon: Prisma },
+        { name: "Redis", icon: Redis },
+        { name: "Docker", icon: Docker },
+      ],
+    },
+    {
+      title: "Herramientas",
+      items: [
+        { name: "Git", icon: Git },
+        { name: "Figma", icon: Figma },
+        { name: "Power BI", icon: PowerBI },
+        { name: "Crystal Reports", icon: CrystalReports },
+      ],
+    },
+    {
+      title: "Metodologías",
+      items: [
+        { name: "Scrum / Ágil", icon: undefined },
+        { name: "APIs REST", icon: undefined },
+        { name: "CI/CD básico", icon: undefined },
+        { name: "Conventional Commits", icon: undefined },
+        { name: "Auditoría de seguridad (RLS, hardening JWT)", icon: undefined },
+      ],
+    },
+  ],
+  en: [
+    {
+      title: "Backend",
+      items: [
+        { name: "TypeScript", icon: Typescript },
+        { name: "NestJS", icon: NestJS },
+        { name: "Node.js", icon: NodeJS },
+        { name: "Python", icon: Python },
+        { name: ".NET / C#", icon: DotNet },
+      ],
+    },
+    {
+      title: "Frontend",
+      items: [
+        { name: "React", icon: React },
+        { name: "Vite", icon: Vite },
+        { name: "Vue.js", icon: VueJS },
+        { name: "Astro", icon: AstroIcon },
+        { name: "Tailwind CSS", icon: Tailwind },
+      ],
+    },
+    {
+      title: "Data & Infra",
+      items: [
+        { name: "PostgreSQL", icon: PostgreSQL },
+        { name: "MySQL", icon: MySQL },
+        { name: "TypeORM", icon: TypeORM },
+        { name: "Prisma", icon: Prisma },
+        { name: "Redis", icon: Redis },
+        { name: "Docker", icon: Docker },
+      ],
+    },
+    {
+      title: "Tools",
+      items: [
+        { name: "Git", icon: Git },
+        { name: "Figma", icon: Figma },
+        { name: "Power BI", icon: PowerBI },
+        { name: "Crystal Reports", icon: CrystalReports },
+      ],
+    },
+    {
+      title: "Methodologies",
+      items: [
+        { name: "Scrum / Agile", icon: undefined },
+        { name: "REST APIs", icon: undefined },
+        { name: "Basic CI/CD", icon: undefined },
+        { name: "Conventional Commits", icon: undefined },
+        { name: "Security auditing (RLS, JWT hardening)", icon: undefined },
+      ],
+    },
+  ],
+} as const;
+---
+
+<div class="flex flex-col gap-y-8">
+  {
+    CATEGORIES[lang].map(({ title, items }) => (
+      <div data-reveal>
+        <h3 class="mb-3 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
+          {title}
+        </h3>
+        <ul class="flex flex-wrap gap-2">
+          {items.map(({ name, icon: Icon }) => (
+            <li>
+              <span class="flex items-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-800/60 py-1.5 px-3 text-sm text-gray-700 dark:text-gray-300">
+                {Icon && <Icon class="size-4" />}
+                {name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
